@@ -51,12 +51,12 @@ mongoose
   
 app.get("/v1/api/chats/socket", (req, res) => {
   try {
-
     if (!getIo()) {
       initializeSocket(server);
-      console.log("Socket initialized on demand!");
+      console.log("🔌 Socket initialized on demand!");
     } else {
-      console.log("Socket already initialized.");
+      console.log("⚡ Socket already initialized.");
+
     }
     res.status(200).json({ message: "Socket initialized successfully" });
   } catch (error) {
@@ -68,3 +68,5 @@ const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+
