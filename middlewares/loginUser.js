@@ -24,7 +24,7 @@ exports.loginUser = async (req, res) => {
          res.cookie("authToken", jwtToken, {
             httpOnly: true,
             secure: true,
-            sameSite: "Strict",
+            sameSite: "None",
           });
 
 
