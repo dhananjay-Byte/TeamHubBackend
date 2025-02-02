@@ -23,8 +23,8 @@ exports.loginUser = async (req, res) => {
 
          res.cookie("authToken", jwtToken, {
             httpOnly: true,
-            secure: false,
-            sameSite: "Lax",
+            secure: true,
+            sameSite: "None",
           });
 
 
