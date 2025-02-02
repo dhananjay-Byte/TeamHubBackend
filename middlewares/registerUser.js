@@ -11,7 +11,7 @@ exports.register = async (req, res) => {
         const { email, username, password } = req.body;
         const lowecase_username = username.toLowerCase();
 
-        // validating the user here before hashing the password.
+
         const userExists = await ValidateNewUser(email, lowecase_username);
         if (userExists) {
             return res.status(409).json({ error: 'Email or username already exists.' });
@@ -28,7 +28,7 @@ exports.register = async (req, res) => {
         })
         await newUser.save();
 
-        const verificationLink = `http://localhost:5000/v1/api/mail/verify-email?token=${verificationToken}`
+        const verificationLink = `https://teamhubbackend.onrender.com/v1/api/mail/verify-email?token=${verificationToken}`
 
         const htmlcontent = await verifyTemplate.verifyEmailTemplate(username,verificationLink);
         
