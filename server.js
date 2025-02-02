@@ -43,7 +43,19 @@ mongoose
   });
 
 // Initialize Socket.io
-initializeSocket(server);
+app.get("/v1/api/chats/socket", (req, res) => {
+  try {
+    if (!getIo()) {
+      initializeSocket(server);
+      console.log("🔌 Socket initialized on demand!");
+    } else {
+      console.log("⚡ Socket already initialized.");
+    }
+    res.status(200).json({ message: "Socket initialized successfully" });
+  } catch (error) {
+    res.status(500).json({ error: "Failed to initialize socket" });
+  }
+});
 
 const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
